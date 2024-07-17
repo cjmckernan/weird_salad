@@ -44,7 +44,7 @@ const checkoutButton = document.getElementById('submit-button');
           if (data.success) {
               window.location.href = saleCreateUrl;
           } else {
-              alert('Something went wrong. Please try again.');
+               alert(data.error || 'Something went wrong. Please try again.');
           }
       })
       .catch(error => console.error('Error:', error));

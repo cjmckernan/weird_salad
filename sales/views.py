@@ -1,5 +1,5 @@
 from django.views.generic import ListView, View
-from stock.models import Recipe
+from stock.models import Recipe, RecipeIngredient
 from .models import Sale
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,6 +26,26 @@ class SaleProcessView(LoginRequiredMixin, View):
         is_card = data.get('is_card', False) 
         total = data.get('total')
         employee = request.user
+
+        ingredients_to_update = {}
+        
+        # Check if there's enough stock for each ingredient
+        for item_name in items:
+            recipe = Recipe.objects.get(name=item_name)
+            recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe)
+            for recipe_ingredient in recipe_ingredients:
+                ingredient = recipe_ingredient.ingredient
+                if ingredient.quantity < recipe_ingredient.quantity:
+                    return JsonResponse({'success': False, 'error': f'Not enough stock for {ingredient.ingredient_name}.'})
+                
+                if ingredient in ingredients_to_update:
+                    ingredients_to_update[ingredient] += recipe_ingredient.quantity
+                else:
+                    ingredients_to_update[ingredient] = recipe_ingredient.quantity
+       
+        for ingredient, quantity in ingredients_to_update.items():
+            ingredient.quantity -= quantity
+            ingredient.save()
 
         sale = Sale.objects.create(employee=employee, is_card=is_card, total_cost=total, location=employee.location) 
 

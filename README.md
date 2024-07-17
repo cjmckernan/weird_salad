@@ -27,3 +27,13 @@ I've used grams for the ingredients in the builder to make it easier to add them
 ## Point of Sale 
 
 Finally I will add the point of sale app. This will allow the user to choose a recipe from a recipe lists and choose a radio button if its cash or card. If cash it will automatically check out and update the ingredients for the amounts used. Then will log the sale to a sales table. The sale table will have total cost, user who logged it if it was cash or card. I wont focus on the audit log for what is sold as of now. Will try to get this done first 
+
+- Added the functionality to in the process sale method to check all the ingredients 
+
+
+# Final 
+
+
+## Running the application 
+
+
