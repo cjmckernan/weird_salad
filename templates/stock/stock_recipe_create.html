@@ -4,11 +4,15 @@
 {% block content %}
   <div class="container mt-5">
     <h2>Create a New Recipe</h2>
-  <form id="recipe-form" method="POST" action="{% url 'recipe_create' %}">
+    <form id="recipe-form" method="POST" action="{% url 'recipe_create' %}">
       {% csrf_token %}
       <div class="form-group mt-3">
         <label for="recipe-name">Recipe Name:</label>
         <input type="text" class="form-control" id="recipe-name" name="name" required>
+      </div>
+      <div class="form-group mt-3">
+        <label for="recipe-cost">Recipe Cost:</label>
+        <input type="number" class="form-control" id="recipe-cost" name="cost" step="0.01" required>
       </div>
       <div class="form-group mt-3">
         <label for="ingredient-name">Ingredient:</label>
@@ -40,4 +44,3 @@
   </div>
   <script src="{% static 'js/recipe_creator.js' %}"></script>
 {% endblock content %}
-

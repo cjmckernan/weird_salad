@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <input type="hidden" name="quantities[]" value="${quantity}">
                 ${ingredientName}
             </td>
-            <td>${quantity} Kg</td>
+            <td>${quantity} Grams</td>
             <td><button type="button" class="btn btn-danger remove-ingredient">Remove</button></td>
         `;
 
@@ -37,3 +37,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

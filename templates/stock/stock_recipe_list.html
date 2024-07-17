@@ -11,6 +11,7 @@
           <th scope="col">Name</th>
           <th scope="col">Location</th>
           <th scope="col">Ingredients</th>
+          <th scope="col">Cost</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -19,6 +20,7 @@
         <tr>
           <td>{{ recipe.name }}</td>
           <td>{{ recipe.location }}</td>
+          <td>${{ recipe.cost }}</td>
           <td>
             <ul>
               {% for recipe_ingredient in recipe.recipeingredient_set.all %}

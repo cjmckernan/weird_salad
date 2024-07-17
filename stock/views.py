@@ -49,24 +49,23 @@ from django.contrib.auth.decorators import login_required
 def recipe_create(request):
     if request.method == 'POST':
         recipe_name = request.POST['name']
+        recipe_cost = request.POST['cost']
         ingredient_ids = request.POST.getlist('ingredients[]')
         quantities = request.POST.getlist('quantities[]')
 
         user_location = request.user.location
 
-        recipe = Recipe.objects.create(name=recipe_name, location=user_location)
+        recipe = Recipe.objects.create(name=recipe_name, cost=recipe_cost, location=user_location)
 
         for ingredient_id, quantity in zip(ingredient_ids, quantities):
             ingredient = Ingredient.objects.get(id=ingredient_id)
-            quantity_in_kg = float(quantity) / 1000  # Convert grams to kilograms
+            quantity_in_kg = float(quantity) / 1000  
             RecipeIngredient.objects.create(recipe=recipe, ingredient=ingredient, quantity=quantity_in_kg)
 
-        return redirect('ingredients')  # Adjust this to your success URL
+        return redirect('ingredients')  
 
     ingredients = Ingredient.objects.all()
     return render(request, 'stock/stock_recipe_create.html', {'object_list': ingredients})
-
-
 
 
 class RecipeListView(LoginRequiredMixin, ListView):

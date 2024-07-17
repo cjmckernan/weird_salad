@@ -17,6 +17,7 @@ class Recipe(models.Model):
     name = models.CharField(max_length=200)
     ingredients = models.ManyToManyField(Ingredient, through='RecipeIngredient')
     location = models.ForeignKey(Location,  null=True, on_delete=models.DO_NOTHING) 
+    cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
 
     def __str__(self):
         return self.name
