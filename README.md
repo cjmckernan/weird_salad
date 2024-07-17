@@ -21,7 +21,9 @@ I will add an ingredients model that has a location id to identify it to its loc
 
 Next up is the recipe builder. This will need two models one for the recipe name and another for the recipe ingredients. I will likely use the stock app as they are closely related and will reference each other. I will use some js to build the recipe and make a request to the back end to store it. 
 
-I've used grams for the ingredients in the builder to make it easier to add them. Also added a recipe delete will look into adding recipe editor. Will also have to take a look at the making the recipes names unique based on the location & recipe name
+I've used grams for the ingredients in the builder to make it easier to add them. Also added a recipe delete will look into adding recipe editor. Will also have to take a look at the making the recipes names unique based on the location & recipe name. Added the cost to the 
 
 
+## Point of Sale 
 
+Finally I will add the point of sale app. This will allow the user to choose a recipe from a recipe lists and choose a radio button if its cash or card. If cash it will automatically check out and update the ingredients for the amounts used. Then will log the sale to a sales table. The sale table will have total cost, user who logged it if it was cash or card. I wont focus on the audit log for what is sold as of now. Will try to get this done first 

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sale Processed{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5 text-center">
+    <h2>Thank You!</h2>
+    <p>Your sale has been successfully processed.</p>
+    <a href="{% url 'sale_create' %}" class="btn btn-primary mt-3">Create Another Sale</a>
+  </div>
+{% endblock content %}
