@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes{% endblock title %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Recipes</h2>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Ingredients</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for recipe in recipes %}
+        <tr>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.location }}</td>
+          <td>
+            <ul>
+              {% for recipe_ingredient in recipe.recipeingredient_set.all %}
+                <li>{{ recipe_ingredient.ingredient.ingredient_name }}: {{ recipe_ingredient.quantity }} Kg</li>
+              {% endfor %}
+            </ul>
+          </td>
+        <td>
+          <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-danger">Delete</a>
+        </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}

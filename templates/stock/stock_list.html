@@ -3,6 +3,8 @@
 {% block content %}
   <h1 class="mt-4">Ingredients</h1>
   <a href="{% url 'ingredient_add' %}" class="btn btn-secondary">Add New Ingredient</a>
+  <a href="{% url 'recipe_creator' %}" class="btn btn-secondary">Create Recipe</a>
+  <a href="{% url 'recipe_list' %}" class="btn btn-secondary">View Recipes</a>
   <table class="table table-striped">
     <thead>
       <tr>

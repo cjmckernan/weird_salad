@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recipe Creator{% endblock title %}
+{% block content %}
+  <div class="container mt-5">
+    <h2>Create a New Recipe</h2>
+  <form id="recipe-form" method="POST" action="{% url 'recipe_create' %}">
+      {% csrf_token %}
+      <div class="form-group mt-3">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" class="form-control" id="recipe-name" name="name" required>
+      </div>
+      <div class="form-group mt-3">
+        <label for="ingredient-name">Ingredient:</label>
+        <select id="ingredient-select" class="form-control">
+          {% for ingredient in object_list %}
+            <option value="{{ ingredient.id }}">{{ ingredient.ingredient_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <label for="ingredient-quantity">Quantity (Grams):</label>
+        <input type="number" class="form-control" id="ingredient-quantity" step="0.001">
+      </div>
+      <button type="button" class="btn btn-primary mt-3" id="add-ingredient">Add Ingredient</button>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Ingredient</th>
+            <th scope="col">Quantity (Grams)</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ingredient-list">
+          <!-- Ingredients will be added here -->
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-success mt-3">Create Recipe</button>
+    </form>
+  </div>
+  <script src="{% static 'js/recipe_creator.js' %}"></script>
+{% endblock content %}
+
