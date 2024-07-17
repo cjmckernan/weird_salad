@@ -30,10 +30,43 @@ Finally I will add the point of sale app. This will allow the user to choose a r
 
 - Added the functionality to in the process sale method to check all the ingredients 
 
-
 # Final 
 
+I prioritised getting a lot of the features completed to make it an actual useful application. Due to this the system isn't as fault tolerant as I would like. The data isn't 100% sanitised and there are few other views I would of liked to complete to make the system more robust and prevent user from entering in bad data. 
 
 ## Running the application 
 
+I have included a db with everything setup so you dont need to carry out the migrations or configure the data. It is in the db folder on in main directory simple move to the directory above and install requirements and you should be able to just use run command 
 
+
+-Setup Virtual environment 
+
+python3 -m venv .venv 
+source .venv/bin/activate
+
+-Install dependencies 
+
+pip install -r requirements.txt
+
+- DB Migrations Commands (if not using configure db)
+
+python manage.py migrate 
+
+-Run Command
+
+python manage.py runserver
+
+
+### Usernames for configured DB
+
+Admin User 
+-username : nory
+-password : 1234
+
+Normal Users:
+
+-username : harry_grill
+-password : Green1959
+
+-username : barry_burger
+-password : Green1959

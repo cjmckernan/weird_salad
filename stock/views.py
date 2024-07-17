@@ -66,12 +66,12 @@ def recipe_create(request):
     return render(request, 'stock/stock_recipe_create.html', {'object_list': ingredients})
 
 
-class RecipeListView(LoginRequiredMixin, ListView):
+class RecipeListView(LoginRequiredMixin, LocationIdFilterMixin, ListView):
     model = Recipe
     template_name = 'stock/stock_recipe_list.html'
     context_object_name = 'recipes'
 
-class RecipeDeleteView(LoginRequiredMixin, DeleteView):
+class RecipeDeleteView(LoginRequiredMixin, LocationIdFilterMixin, DeleteView):
     model = Recipe
     template_name = 'stock/stock_recipe_delete.html'
     success_url = reverse_lazy('recipe_list')
