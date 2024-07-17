@@ -19,6 +19,9 @@ class Recipe(models.Model):
     location = models.ForeignKey(Location,  null=True, on_delete=models.DO_NOTHING) 
     cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
 
+    class Meta:
+        unique_together = ('name', 'location')
+
     def __str__(self):
         return self.name
 

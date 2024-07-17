@@ -19,5 +19,4 @@ urlpatterns = [
     path('recipe/create/', recipe_create, name='recipe_create'),
     path('recipes', RecipeListView.as_view(), name='recipe_list'),\
     path('recipes/<int:pk>/delete/', RecipeDeleteView.as_view(), name='recipe_delete'),
-
 ]

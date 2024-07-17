@@ -5,7 +5,8 @@ from .mixins import LocationIdFilterMixin
 from stock.models import Ingredient
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import render, redirect
+from .models import Recipe, Ingredient, RecipeIngredient
 
 
 
@@ -41,9 +42,6 @@ class RecipeCreatorView(LoginRequiredMixin, LocationIdFilterMixin, ListView):
     template_name = 'stock/stock_recipe_create.html'
     success_url = reverse_lazy('ingredients')
 
-from django.shortcuts import render, redirect
-from .models import Recipe, Ingredient, RecipeIngredient
-from django.contrib.auth.decorators import login_required
 
 @login_required
 def recipe_create(request):
