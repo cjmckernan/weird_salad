@@ -39,22 +39,22 @@ I prioritised getting a lot of the features completed to make it an actual usefu
 I have included a db with everything setup so you dont need to carry out the migrations or configure the data. It is in the db folder on in main directory simple move to the directory above and install requirements and you should be able to just use run command 
 
 
-- Setup Virtual environment 
+Setup Virtual environment 
 
-python3 -m venv .venv 
-source .venv/bin/activate
+- python3 -m venv .venv 
+- source .venv/bin/activate
 
-- Install dependencies 
+Install dependencies 
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
-- DB Migrations Commands (if not using configure db)
+DB Migrations Commands (if not using configure db)
 
-python manage.py migrate 
+-python manage.py migrate 
 
-- Run Command
+Run Command
 
-python manage.py runserver
+- python manage.py runserver
 
 
 ### Usernames for configured DB
