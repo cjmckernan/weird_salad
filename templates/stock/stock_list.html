@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Ingredients{% endblock title %}
+{% block content %}
+  <h1 class="mt-4">Ingredients</h1>
+  <a href="{% url 'ingredient_add' %}" class="btn btn-secondary">Add New Ingredient</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ingredient in object_list %}
+      <tr>
+        <td>{{ ingredient.ingredient_name }}</td> 
+        <td>{{ ingredient.quantity }} Kg</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="">
+          <a href="{% url 'ingredient_edit' ingredient.pk %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'ingredient_delete' ingredient.pk %}" class="btn btn-danger">Delete</a>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
+
